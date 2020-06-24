@@ -1,9 +1,9 @@
 const mongoose = require("mongoose")
 
 const AddressSchema = new mongoose.Schema({
-  idUser : ObjectId,
+  idUser : mongoose.Types.ObjectId,
   country: String,
-  postcode : String,
+  postCode : Number,
   distinct: String,
   state : String
 })

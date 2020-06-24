@@ -1,4 +1,5 @@
 const User = require("../models/user.model");
+const PrimarySchool = require("../models/primary-school.model");
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
@@ -42,7 +43,7 @@ exports.UserEditInformation = async (req,res) => {
       }
        await User.findByIdAndUpdate(id,req.body);
        const exitsUser = await User.findById(id)
-      res.status(200).json({
+       res.status(200).json({
         user : exitsUser
       })
     }catch (err) {
@@ -50,4 +51,34 @@ exports.UserEditInformation = async (req,res) => {
         message : "Wrong ! Not found User"
       })
     }
+}
+exports.UserEditPriSchool = async (req,res) => {
+    try {
+      const {id} = req.params;
+      await PrimarySchool.findOneAndUpdate({idUser: id}, req.body)
+      const primarySchoolUser  =  await PrimarySchool.findOne({idUser:id});
+      res.status(200).json({
+        priSchool: primarySchoolUser
+      })
+    } catch (err) {
+      res.status(404).json({
+        message : "Wrong ! Not found User"
+      })
+    }
+}
+exports.UserGetPriSchool = async (req,res) => {
+  try {
+      const {id} = req.params;
+      const informationPri = await PrimarySchool.findOne({idUser : id});
+      if(!informationPri)  {
+         new PrimarySchool({idUser : id}).save();
+      } 
+      res.status(200).json({
+        priSchool : informationPri
+      })
+  } catch (err) {
+    res.status(404).json({
+      message : "Wrong ! Not found User"
+    })
+  }
 }

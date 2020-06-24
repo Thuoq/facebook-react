@@ -1,9 +1,10 @@
 const mongoose = require("mongoose");
 
 const MoreInformationSchema = new mongoose.Schema({
-  idUser : ObjectId,
+  idUser : mongoose.Types.ObjectId,
   interested : String,
-  language : Array,
+  hobby: String,
+  language: String
 })
 
 const MoreInformation = mongoose.model("MoreInformation",MoreInformationSchema,"moreInformation");

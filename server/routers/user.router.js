@@ -8,5 +8,8 @@ router.post("/login" ,
 router.post("/signup",
   UserMiddleware.authenticationUserSignUp,
   controllerUser.userSignUp);
-router.post("/:id/editUser",controllerUser.UserEditInformation)
+router.post("/:id/editUser",controllerUser.UserEditInformation);
+router.post("/:id/editPriSchool",controllerUser.UserEditPriSchool);
+router.get("/:id/priSchool",controllerUser.UserGetPriSchool);
+router.post("/:id/priSchool",controllerUser.UserEditPriSchool);  
 module.exports  = router; 

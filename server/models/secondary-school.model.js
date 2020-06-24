@@ -5,7 +5,8 @@ const SecondarySchoolSchema = new mongoose.Schema({
   name : String,
   degree: String,
   fieldStudy: String,
-  academyYear: Number
+  startYear: Number,
+  endYear: Number
 })
 
 const SecondarySchool = mongoose.model("SecondarySchool",

@@ -1,11 +1,12 @@
 const mongoose = require("mongoose");
 
 const PrimarySchoolSchema = new mongoose.Schema({
-  idUser: ObjectId,
+  idUser: mongoose.Types.ObjectId,
   name: String,
   degree: String,
   fieldStudy: String,
-  academyYear: Number
+  startYear: Number,
+  endYear:Number
 })
 
 const PrimarySchool = mongoose.model("PrimarySchool",PrimarySchoolSchema, "primarySchool");
